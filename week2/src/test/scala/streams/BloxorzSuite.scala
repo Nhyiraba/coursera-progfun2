@@ -58,6 +58,16 @@ class BloxorzSuite extends FunSuite {
     }
   }
 
+  test("done") {
+    new Level1 {
+      assert(done(Block(Pos(4,7), Pos(4,7))), "4,7:4,7")
+      assert(!done(Block(Pos(4,6), Pos(4,6))), "4,6:4,6")
+      assert(!done(Block(Pos(4,7), Pos(4,8))), "4,7:4,8")
+      assert(!done(Block(Pos(4,7), Pos(5,7))), "4,7:5,7")
+      assert(!done(Block(Pos(4,6), Pos(4,7))), "4,6:4,7")
+    }
+  }
+
 
 	test("terrain function level 1") {
     new Level1 {
@@ -77,6 +87,32 @@ class BloxorzSuite extends FunSuite {
 	test("findChar level 1") {
     new Level1 {
       assert(startPos == Pos(1,1))
+    }
+  }
+
+
+  test("neighbors with history") {
+    new Level1 {
+      assert(neighborsWithHistory(startBlock, List(Left,Up)).toSet == Set(
+        (Block(Pos(1,2),Pos(1,3)), List(Right,Left,Up)),
+        (Block(Pos(2,1),Pos(3,1)), List(Down,Left,Up))
+      ))
+    }
+  }
+
+  test("new neighbors only") {
+    new Level1 {
+      val result = newNeighborsOnly(
+        Set(
+          (Block(Pos(1,2),Pos(1,3)), List(Right,Left,Up)),
+          (Block(Pos(2,1),Pos(3,1)), List(Down,Left,Up))
+        ).toStream,
+        Set(Block(Pos(1,2),Pos(1,3)), Block(Pos(1,1),Pos(1,1)))
+      )
+      val expected = Set(
+        (Block(Pos(2,1),Pos(3,1)), List(Down,Left,Up))
+      ).toStream
+      assert(result == expected)
     }
   }
 
