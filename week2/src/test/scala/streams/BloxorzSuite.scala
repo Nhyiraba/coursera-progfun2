@@ -49,6 +49,16 @@ class BloxorzSuite extends FunSuite {
   }
 
 
+  test("legal neighbors") {
+    new Level1 {
+      assert(startBlock.legalNeighbors == List(
+        (Block(Pos(1,2), Pos(1,3)), Right),
+        (Block(Pos(2,1), Pos(3,1)), Down))
+      )
+    }
+  }
+
+
 	test("terrain function level 1") {
     new Level1 {
       assert(terrain(Pos(0,0)), "0,0")
