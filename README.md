@@ -8,3 +8,7 @@ This project contains source code written for peer-reviewed assignments in [Func
 
 > The goal of this assignment is to familiarize yourself with the infrastructure and the tools required during this class. Even though the grade in this assignment will be excluded from your final grade for the course, it is important that you work through this assignment carefully.
 
+## Assignment: Bloxorz
+
+[Week 2 assignment](https://github.com/sczerwinski/coursera-progfun2/wiki/Week-2)
+
