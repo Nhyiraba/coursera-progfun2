@@ -41,6 +41,14 @@ class BloxorzSuite extends FunSuite {
   }
 
 
+  test("standing") {
+    new Level1 {
+      assert(Block(Pos(3,5), Pos(3,5)).isStanding, "3,5:3,5")
+      assert(!Block(Pos(3,4), Pos(3,5)).isStanding, "3,4:3,5")
+    }
+  }
+
+
 	test("terrain function level 1") {
     new Level1 {
       assert(terrain(Pos(0,0)), "0,0")
